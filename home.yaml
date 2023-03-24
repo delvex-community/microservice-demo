@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: home
+  name: home
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: home
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: home
+    spec:
+      containers:
+      - image: aakashgaur57/home
+        name: homecontainer
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}

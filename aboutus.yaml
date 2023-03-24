@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: aboutus
+  name: aboutus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aboutus
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: aboutus
+    spec:
+      containers:
+      - image: aakashgaur57/about
+        name: aboutuscontainer
+        resources: {}
+status: {}

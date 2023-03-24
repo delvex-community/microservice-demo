@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: contact
+  name: contact
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: contact
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: contact
+    spec:
+      containers:
+      - image: aakashgaur57/contact
+        name: contactcontainer
+        resources: {}
+status: {}

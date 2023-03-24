@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: node
+  name: node
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: node
+    spec:
+      containers:
+      - image: aakashgaur57/node
+        name: nodecontainer
+        ports:
+        - containerPort: 80
+        env:
+        - name: MONGODB_URI
+          value: mongodb://test.example.com/mongo/mydb
+        resources: {}
+status: {}

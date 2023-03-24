@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: courses
+  name: courses
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: courses
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: courses
+    spec:
+      containers:
+      - image: aakashgaur57/courses
+        name: coursescontainer
+        resources: {}
+status: {}
