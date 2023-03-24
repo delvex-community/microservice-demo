@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - image: aakashgaur57/exams
-        name: homecontainer
+        name: examcontainer
         ports:
         - containerPort: 80
         resources: {}
