@@ -42,8 +42,8 @@ services:
     image: aakashgaur57/nodeapp
     ports:
       - 1128:3000  
-    environment:
-       MONGO_URI: mongodb://192.168.29.29:1127/mydb
+        # environment:
+            #    MONGO_URI: mongodb://192.168.29.29:1127/mydb
   login:
     container_name: login_c
     build: ./login_register/
