@@ -23,7 +23,7 @@ spec:
         ports:
         - containerPort: 80
         env:
-        - name: MONGODB_URI
-          value: mongodb://test.example.com/mongo/mydb
+        - name: MONGO_URI
+          value: "mongodb://mongolb.default.svc.cluster.local:80/mydb"
         resources: {}
 status: {}

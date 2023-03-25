@@ -3,65 +3,54 @@ kind: Ingress
 metadata:
   name: example-ingress
   annotations:
-   nginx.ingress.kubernetes.io/rewrite-target: /$1
+   nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: test.example.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: homelb
-                port:
-                  number: 80
-          - path: /courses
-            pathType: Prefix
-            backend:
-              service:
-                name: courseslb
-                port:
-                  number: 80
-          - path: /aboutus
-            pathType: Prefix
-            backend:
-              service:
-                name: aboutuslb
-                port:
-                  number: 80
-          - path: /contact
-            pathType: Prefix
-            backend:
-              service:
-                name: contactlb
-                port:
-                  number: 80
-          - path: /register
-            pathType: Prefix
-            backend:
-              service:
-                name: loginlb
-                port:
-                  number: 80
-                  #          - path: /login
-                  # pathType: Prefix
-                  # backend:
-                  #service:
-                  #name: loginlb
-                  #port:
-                  #number: 80
-          - path: /exams
-            pathType: Prefix
-            backend:
-              service:
-                name: examslb
-                port:
-                  number: 80
-          - path: /mogo
-            pathType: Prefix
-            backend:
-              service:
-                name: mongolb
-                port:
-                  number: 27017
+  - host: test.example.com
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: homelb
+              port:
+                number: 80
+        - path: /courses
+          pathType: Prefix
+          backend:
+            service:
+              name: courseslb
+              port:
+                number: 80
+        - path: /aboutus
+          pathType: Prefix
+          backend:
+            service:
+              name: aboutuslb
+              port:
+                number: 80
+        - path: /contact
+          pathType: Prefix
+          backend:
+            service:
+              name: contactlb
+              port:
+                number: 80
+        - path: /exams
+          pathType: Prefix
+          backend:
+            service:
+              name: examslb
+              port:
+                number: 80
+  - host: auth.example.com
+    http:
+      paths:
+      -   path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: loginlb
+              port:
+                number: 80
