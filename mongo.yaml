@@ -18,7 +18,7 @@ spec:
         app: mongo
     spec:
       containers:
-      - image: loveyogi2000/micro-login
+      - image: loveyogi2000/micro-mongo
         name: mongocontainer
         ports:
         - containerPort: 80
