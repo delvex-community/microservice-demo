@@ -18,7 +18,7 @@ spec:
         app: contact
     spec:
       containers:
-      - image: aakashgaur57/contact
+      - image: loveyogi2000/micro-contact
         name: contactcontainer
         resources: {}
 status: {}

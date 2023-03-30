@@ -18,7 +18,7 @@ spec:
         app: aboutus
     spec:
       containers:
-      - image: aakashgaur57/about
+      - image: loveyogi2000/micro-about
         name: aboutuscontainer
         resources: {}
 status: {}

@@ -18,7 +18,7 @@ spec:
         app: courses
     spec:
       containers:
-      - image: aakashgaur57/courses
+      - image: loveyogi2000/micro-courses
         name: coursescontainer
         resources: {}
 status: {}

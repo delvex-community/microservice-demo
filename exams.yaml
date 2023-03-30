@@ -18,7 +18,7 @@ spec:
         app: exams
     spec:
       containers:
-      - image: aakashgaur57/exams
+      - image: loveyogi2000/micro-exams
         name: examcontainer
         ports:
         - containerPort: 80
