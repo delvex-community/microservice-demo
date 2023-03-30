@@ -18,7 +18,7 @@ spec:
         app: node
     spec:
       containers:
-      - image: loveyogi2000/micro-nodeapp
+      - image: aakashgaur57/nodeapp
         name: nodecontainer
         ports:
         - containerPort: 80

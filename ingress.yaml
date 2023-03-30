@@ -51,14 +51,14 @@ spec:
                   #name: loginlb
                   #port:
                   #number: 80
-          - path: /exams
+          - path: /exam
             pathType: Prefix
             backend:
               service:
                 name: examslb
                 port:
                   number: 80
-          - path: /mogo
+          - path: /mongo
             pathType: Prefix
             backend:
               service:
