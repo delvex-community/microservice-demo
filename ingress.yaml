@@ -16,6 +16,13 @@ spec:
               name: homelb
               port:
                 number: 80
+        - path: /home
+          pathType: Prefix
+          backend:
+            service:
+              name: homelb
+              port:
+                number: 80        
         - path: /courses
           pathType: Prefix
           backend:
