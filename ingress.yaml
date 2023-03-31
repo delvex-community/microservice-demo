@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: example-ingress
   annotations:
-   nginx.ingress.kubernetes.io/rewrite-target: /$1
+           nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - host: test.example.com
@@ -45,6 +45,13 @@ spec:
               port:
                 number: 80
         - path: /login
+          pathType: Prefix
+          backend:
+            service:
+              name: loginlb
+              port:
+                number: 80
+        - path: /register
           pathType: Prefix
           backend:
             service:
