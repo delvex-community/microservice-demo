@@ -27,7 +27,7 @@ For Sake of time, we can run the script named *build.sh* present under *scripts*
    
  - The content of build script looks like this
 
-    https://raw.githubusercontent.com/delvex-community/microservice-demo/0cdeeb8cc3c1751fa000e0947c85ca0e3a69680a/demo/02-script.png
+    <img src="https://github.com/delvex-community/microservice-demo/blob/a4d3a4eebda56a4faee1eb54b385cd1d19f7d3ec/demo/02-script.png" />
 
  - After the images are built, you can cross-check images using  `docker
    images`
@@ -53,7 +53,7 @@ For Sake of time, we can run the script named *build.sh* present under *scripts*
 
  - To cross-check if containers are created in *upflairs* network :-
 	 `docker network inspect upflairs`
-	 https://raw.githubusercontent.com/delvex-community/microservice-demo/0cdeeb8cc3c1751fa000e0947c85ca0e3a69680a/demo/03-inspect.png
+	<img src="https://github.com/delvex-community/microservice-demo/blob/a4d3a4eebda56a4faee1eb54b385cd1d19f7d3ec/demo/03-inspect.png"/>
 
 
 ## Checking Connectivity
@@ -96,4 +96,4 @@ Now, in order to cross-check if we can access the containers present under diffe
  `curl db-in-delvex:27017`
 
 3. You won't be able to resolve the hostname and output should look like this 
- https://raw.githubusercontent.com/delvex-community/microservice-demo/0cdeeb8cc3c1751fa000e0947c85ca0e3a69680a/demo/04-connectivity.png
+ <img src="https://raw.githubusercontent.com/delvex-community/microservice-demo/0cdeeb8cc3c1751fa000e0947c85ca0e3a69680a/demo/04-connectivity.png"/>
