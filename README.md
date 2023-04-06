@@ -1,170 +1,99 @@
-# microservices
-it is basically a web app that working in microservices architecture in ec2 in which i have used different docker container for each services running on seperate container
-#THIS IS TEST CHECK
+# Container Networking Model Use-Cases
 
-Step 1: Install Nginx
+## Everything Under Same Bridge 
+For Demonstration, we are only going to build and run  **Home, Auth & DB** containers.
 
-Copy code
-yum install nginx -y
-Step 2: Configure Nginx for reverse proxy
+ - Let's Start by Creating a network named **Upflairs** (By Default it
+   creates with driver **bridge** )
+   
+       docker network create upflairs
+ - We can Inspect the newly created network bridge by  
+   
+       docker network inspect upflairs
 
-Using this below cmd:
-cd /etc/nginx
-vim nginx.conf
-Then, paste the following content into the nginx.conf file:
+ 
 
-bash
-Copy code
-user nginx;
-worker_processes auto;
-error_log /var/log/nginx/error.log;
-pid /run/nginx.pid;
+ - Output should look like this 
+    https://raw.githubusercontent.com/delvex-community/microservice-demo/0cdeeb8cc3c1751fa000e0947c85ca0e3a69680a/demo/01-network.png
 
-# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
-include /usr/share/nginx/modules/*.conf;
+Now, Let's start building the Docker Images for the specified micro-services.
+For Sake of time, we can run the script named *build.sh* present under *scripts* directory.
 
-events {
-    worker_connections 1024;
-}
+ - Making sure the permissions are correct 
+  `chmod -R +x deploy-scripts/`
+  
+ - Execute build.sh
+   `./deploy-scripts/build.sh`
+   
+ - The content of build script looks like this
 
-http {
-    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-                      '$status $body_bytes_sent "$http_referer" '
-                      '"$http_user_agent" "$http_x_forwarded_for"';
+    https://raw.githubusercontent.com/delvex-community/microservice-demo/0cdeeb8cc3c1751fa000e0947c85ca0e3a69680a/demo/02-script.png
 
-    access_log  /var/log/nginx/access.log  main;
+ - After the images are built, you can cross-check images using  `docker
+   images`
+ - The output should contain the following images :- 
+   - [ ] upflairs/auth-frontend
+   - [ ] upflairs/home
+   - [ ]  upflairs/db
 
-    sendfile            on;
-    tcp_nopush          on;
-    tcp_nodelay         on;
-    keepalive_timeout   65;
-    types_hash_max_size 4096;
+### Starting the Containers
 
-    include             /etc/nginx/mime.types;
-    default_type        application/octet-stream;
+ - To start a container in the same network bridge that we created
+   before, follow these steps :-
+   
+   `docker run -d --network=upflairs --name=home upflairs/home`
+    `docker run -d --network=upflairs --name=auth-frontend upflairs/auth-frontend` 
+   `docker run -d --network=upflairs --name=db upflairs/db`
+ - Now let's cross-check if the containers are in up state
+   Run `docker ps` and check 5th column of output :-
+   
+      - [ ] auth
+      - [ ] home
+      - [ ]  db
 
-    # Load modular configuration files from the /etc/nginx/conf.d directory.
-    # See http://nginx.org/en/docs/ngx_core_module.html#include
-    # for more information.
-    include /etc/nginx/conf.d/*.conf;
-
-    server {
-        listen       80;
-        listen       [::]:80;
-        server_name test-123.com;
-
-        location / {
-            proxy_pass  http://13.235.51.128:8083/;
-        }
-
-        location /aboutus {
-            proxy_pass  http://13.235.51.128:8083/;
-        }
-
-        location /home {
-            proxy_pass  http://13.235.51.128:8080/;
-        }
-
-        location /contact/ {
-            proxy_pass  http://13.235.51.128:8081/;
-        }
-
-        location /courses/ {
-            proxy_pass  http://13.235.51.128:8082/;
-        }
-
-        location /login {
-            proxy_pass  http://13.235.51.128:8084/;
-        }
-
-        location /register {
-            proxy_pass  http://13.235.51.128:8084/register.html;
-        }
-
-        location /exam {
-            proxy_pass  http://13.235.51.128:8088/;
-        }
-
-        location /sucess {
-            proxy_pass  http://13.235.51.128:8086/;
-        }
-
-    }
-}
-Note: Please replace the IP address in each proxy_pass directive with your own IP address. Do not change the port number.
-
-Save the changes and exit the editor by pressing ESC and then typing :wq.
-
-Restart Nginx using the following command:
-
-Copy code
-service nginx restart
-Step 4: Pull Docker containers from loveyogi2000
-
-bash
-Copy code
-docker pull loveyogi2000/mongodb
-docker pull loveyogi2000/nodeapp
-docker pull loveyogi2000/sucess
-docker pull loveyogi2000/login
-docker pull loveyogi2000/courses
-docker pull loveyogi2000/contact
-docker pull loveyogi2000/about
-docker pull loveyogi2000/home
-Step 5: Run Docker containers
-
-lua
-Copy code
-docker network create mynetwork
-
-docker run --name mongodb -d -p 27017:27017 --net mynetwork loveyogi2000/mongodbcontainer
-docker run --name nodeapp -d -p 3000:3000
+ - To cross-check if containers are created in *upflairs* network :-
+	 `docker network inspect upflairs`
+	 https://raw.githubusercontent.com/delvex-community/microservice-demo/0cdeeb8cc3c1751fa000e0947c85ca0e3a69680a/demo/03-inspect.png
 
 
+## Checking Connectivity
 
-Love yogi
-docker run --name home -d -p 8080:80 home 
-docker run --name contact -d -p 8081:80 contact 
-docker run --name courses -d -p 8082:80 courses 
-docker run --name about -d -p 8083:80 about
-docker run --name login -d -p 8080:84 login
-add thi in step5
-Thank you for the correction. Here's the updated Step 5 with the additional command:
+Now that we've cross-verified the containers are in upflairs image, lets go into the containers and cross-check if we can connect using hostname 
 
-Step 5: Run all containers
+1. Let's start by going inside home container 
+	`docker exec -it home /bin/bash`
 
-Pull all containers from loveyogi2000:
+2. Inside the container, we can use `curl` to get the response
+	`curl db:27017`
+	`curl auth:80`
+3. If you're able to see the response, that basically concludes that all containers are under same bridge and can communicate using hostname
+4. Similarly, you can follow the above steps to check connectivity from other containers as well.
+**NOTE :-** You can use `exit` command to come outside the container
 
-bash
-Copy code
-docker pull loveyogi2000/home
-docker pull loveyogi2000/contact
-docker pull loveyogi2000/courses
-docker pull loveyogi2000/about
-docker pull loveyogi2000/login
-Run the containers using the following commands:
+## Container under different Bridge
 
-bash
-Copy code
-docker run --name home -d -p 8080:80 loveyogi2000/home
-docker run --name contact -d -p 8081:80 loveyogi2000/contact
-docker run --name courses -d -p 8082:80 loveyogi2000/courses
-docker run --name about -d -p 8083:80 loveyogi2000/about
-docker run --name login -d -p 8084:80 loveyogi2000/login
-Create a network for the containers to communicate:
+Now, in order to cross-check if we can access the containers present under different bridge, lets start by creating a network first
 
-lua
-Copy code
-docker network create mynetwork
-Run the MongoDB container:
+ - Create *delvex* network
 
-css
-Copy code
-docker run --name mongodb -d -p 27017:27017 --net mynetwork mongo
-Run the Node.js application container:
+	`docker network create delvex`
 
-css
-Copy code
-docker run --name nodeapp -d -p 3000:3000 --net mynetwork loveyogi2000/nodeapp
-Once all containers are running, you can access the web app using http://your-ec2-instance-ip/home.
+- Lets create another *db* container but within *delvex* network.
+	`docker run -d --network=delvex --name=db-in-delvex upflairs/db`
 
+- You can cross-check the container present in *delvex* network and is in up and running state :-
+`docker network inspect delvex`
+ `docker ps`
+
+### Checking Connectivity 
+
+ In order to check if we can access container present in *delvex* bridge from the container present in *upflairs* bridge 
+
+1. Let's go into home container using 
+   `docker exec -it home /bin/bash`
+   
+2. Now let's try to make a curl request to *db-in-delvex* container on 27017 port number.
+ `curl db-in-delvex:27017`
+
+3. You won't be able to resolve the hostname and output should look like this 
+ https://raw.githubusercontent.com/delvex-community/microservice-demo/0cdeeb8cc3c1751fa000e0947c85ca0e3a69680a/demo/04-connectivity.png
