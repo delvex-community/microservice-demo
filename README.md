@@ -14,7 +14,7 @@ For Demonstration, we are only going to build and run  **Home, Auth & DB** conta
  
 
  - Output should look like this 
-    https://raw.githubusercontent.com/delvex-community/microservice-demo/0cdeeb8cc3c1751fa000e0947c85ca0e3a69680a/demo/01-network.png
+ <img src="https://github.com/delvex-community/microservice-demo/blob/bea8c4cdb114ae9ab9366cb995551333711547b3/demo/01-network.png"/>    
 
 Now, Let's start building the Docker Images for the specified micro-services.
 For Sake of time, we can run the script named *build.sh* present under *scripts* directory.
