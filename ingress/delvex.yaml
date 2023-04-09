@@ -50,14 +50,14 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: login
+            name: auth
             port:
               number: 80
       - path: /auth/register
         pathType: Prefix
         backend:
           service:
-            name: register
+            name: auth
             port:
               number: 80
   tls:
