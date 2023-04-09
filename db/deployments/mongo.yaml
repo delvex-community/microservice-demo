@@ -3,27 +3,24 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: node
-  name: node
+    app: mongo
+  name: mongo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: node
+      app: mongo
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: node
+        app: mongo
     spec:
       containers:
-      - image: aakashgaur57/nodeapp
-        name: nodecontainer
+      - image: aakashgaur57/mongo
+        name: mongo
         ports:
         - containerPort: 80
-        env:
-        - name: MONGO_URI
-          value: "mongodb://mongolb.default.svc.cluster.local:80/mydb"
         resources: {}
 status: {}

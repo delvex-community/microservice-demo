@@ -3,15 +3,15 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: contact
-  name: contactlb
+    app: auth
+  name: auth
 spec:
   ports:
   - port: 80
     protocol: TCP
     targetPort: 80
   selector:
-    app: contact
+    app: auth
   type: NodePort
 status:
   loadBalancer: {}

@@ -3,15 +3,15 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: nodeapp
-  name: nodeapplb
+    app: mongo
+  name: mongo
 spec:
   ports:
-  - port: 80
+  - port: 27017
     protocol: TCP
-    targetPort: 80
+    targetPort: 27017
   selector:
-    app: nodeapp
-  type: NodePort
+    app: mongo
+  type: ClusterIP
 status:
   loadBalancer: {}

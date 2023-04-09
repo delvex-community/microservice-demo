@@ -3,23 +3,23 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: login
-  name: login
+    app: auth
+  name: auth
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: login
+      app: auth
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: login
+        app: auth
     spec:
       containers:
       - image: aakashgaur57/login_register
-        name: logincontainer
+        name: auth
         ports:
         - containerPort: 80
         resources: {}

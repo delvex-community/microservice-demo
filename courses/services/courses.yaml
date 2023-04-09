@@ -3,15 +3,15 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: mongo
-  name: mongolb
+    app: courses
+  name: courses
 spec:
   ports:
   - port: 80
     protocol: TCP
-    targetPort: 27017
+    targetPort: 80
   selector:
-    app: mongo
-  type: ClusterIP
+    app: courses
+  type: NodePort
 status:
   loadBalancer: {}

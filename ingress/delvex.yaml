@@ -1,67 +1,67 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: example-ingress
+  name: test-html-ingress
+  namespace: html
   annotations:
-           nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt-issuer
+    #nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
+  ingressClassName: nginx
   rules:
-  - host: test.example.com
+  - host: msvc.delvex.io
     http:
       paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: homelb
-              port:
-                number: 80
-        - path: /home
-          pathType: Prefix
-          backend:
-            service:
-              name: homelb
-              port:
-                number: 80        
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: home
+            port:
+              number: 80
         - path: /courses
           pathType: Prefix
           backend:
             service:
-              name: courseslb
+              name: courses
               port:
                 number: 80
-        - path: /aboutus
+        - path: /about
           pathType: Prefix
           backend:
             service:
-              name: aboutuslb
+              name: about
               port:
                 number: 80
         - path: /contact
           pathType: Prefix
           backend:
             service:
-              name: contactlb
+              name: contact
               port:
                 number: 80
-        - path: /exam
+        - path: /exams
           pathType: Prefix
           backend:
             service:
-              name: examslb
+              name: exams
               port:
                 number: 80
-        - path: /login
+        - path: /auth/login
           pathType: Prefix
           backend:
             service:
-              name: loginlb
+              name: login
               port:
                 number: 80
-        - path: /register
+        - path: /auth/register
           pathType: Prefix
           backend:
             service:
-              name: loginlb
+              name: login
               port:
                 number: 80
+  tls:
+  - hosts:
+    - msvc.delvex.io
+    secretName: msvc-secret

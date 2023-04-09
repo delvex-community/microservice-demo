@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: home
-  name: homelb
+  name: home
 spec:
   ports:
   - port: 80

@@ -3,15 +3,15 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: courses
-  name: courseslb
+    app: backend
+  name: backend
 spec:
   ports:
   - port: 80
     protocol: TCP
     targetPort: 80
   selector:
-    app: courses
+    app: backend
   type: NodePort
 status:
   loadBalancer: {}

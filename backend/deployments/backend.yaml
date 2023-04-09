@@ -3,24 +3,27 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: exams
-  name: exams
+    app: backend
+  name: backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: exams
+      app: backend
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: exams
+        app: backend
     spec:
       containers:
-      - image: aakashgaur57/exams
-        name: examcontainer
+      - image: aakashgaur57/nodeapp
+        name: backend
         ports:
         - containerPort: 80
+        env:
+        - name: MONGO_URI
+          value: "mongodb://mongolb.default.svc.cluster.local:27017/mydb"
         resources: {}
 status: {}

@@ -3,15 +3,15 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: login
-  name: loginlb
+    app: about
+  name: about
 spec:
   ports:
   - port: 80
     protocol: TCP
     targetPort: 80
   selector:
-    app: login
+    app: about
   type: NodePort
 status:
   loadBalancer: {}

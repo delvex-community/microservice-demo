@@ -3,22 +3,22 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: courses
-  name: courses
+    app: about
+  name: about
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: courses
+      app: about
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: courses
+        app: about
     spec:
       containers:
-      - image: aakashgaur57/courses
-        name: coursescontainer
+      - image: aakashgaur57/about
+        name: about
         resources: {}
 status: {}

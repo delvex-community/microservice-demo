@@ -3,22 +3,24 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: contact
-  name: contact
+    app: exams
+  name: exams
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: contact
+      app: exams
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: contact
+        app: exams
     spec:
       containers:
-      - image: aakashgaur57/contact
-        name: contactcontainer
+      - image: aakashgaur57/exams
+        name: exams
+        ports:
+        - containerPort: 80
         resources: {}
 status: {}
