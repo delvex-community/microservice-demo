@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
   const instanceIPs = window.location.hostname;
   const loginForm = document.querySelector('#login-form');
-  loginForm.action = `http://${instanceIPs}:3000/loginhit`;
+  loginForm.action = `INSERT URL`;
 });
 
 

@@ -24,7 +24,7 @@ db.once('open',()=>{
 
     const http = require('http');
 
-    app.post("/login",(req,res)=>{
+    app.post("/auth/login",(req,res)=>{
         var email = req.body.email;
         var password = req.body.password;
         var  message = "";
@@ -35,7 +35,7 @@ db.once('open',()=>{
             }
             if (!user) {
         message="user not found"; 
-                return  res.redirect(`/login/?msg=${message}`); // Redirect to the destination URL with the message as a query parameter;
+                return  res.redirect(`/auth/login/?msg=${message}`); // Redirect to the destination URL with the message as a query parameter;
             }
             if (user.password === password) {
                 console.log("right credentials");
@@ -45,7 +45,7 @@ db.once('open',()=>{
             
             message="wrong password"; 
                 console.log("wrong credentials");
-                return res.redirect(`/login/?msg=${message}`);
+                return res.redirect(`/auth/login/?msg=${message}`);
             }
         });
     });
@@ -69,7 +69,7 @@ db.once('open',()=>{
             console.log("Record Inserted Successfully");
         });
         
-        return res.redirect(`/login`)
+        return res.redirect(`/auth/login`)
     })
     app.get("/",(req,res)=>{
         
