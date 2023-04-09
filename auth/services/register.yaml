@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: auth
-  name: login
+  name: register
 spec:
   ports:
   - port: 80
