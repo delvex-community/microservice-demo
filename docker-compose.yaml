@@ -26,8 +26,8 @@ services:
       - 1125:80
   home:
     container_name: home_c
-    build: ./home/
-    image: aakashgaur57/home
+    build: .//
+    image: aakashgaur57/
     ports:
       - 1126:80  
   mongo:

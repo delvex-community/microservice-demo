@@ -82,7 +82,7 @@ db.once('open',()=>{
     // Use the ipAddress variable to redirect to the EC2 instance IP address
     app.get("/",(req,res)=>{
         
-        return res.redirect(`/home`);
+        return res.redirect(`/`);
     }).listen(3000);
 
 

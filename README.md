@@ -61,7 +61,7 @@ http {
             proxy_pass  http://13.235.51.128:8083/;
         }
 
-        location /home {
+        location / {
             proxy_pass  http://13.235.51.128:8080/;
         }
 
@@ -110,7 +110,7 @@ docker pull loveyogi2000/login
 docker pull loveyogi2000/courses
 docker pull loveyogi2000/contact
 docker pull loveyogi2000/about
-docker pull loveyogi2000/home
+docker pull loveyogi2000/
 Step 5: Run Docker containers
 
 lua
@@ -137,7 +137,7 @@ Pull all containers from loveyogi2000:
 
 bash
 Copy code
-docker pull loveyogi2000/home
+docker pull loveyogi2000/
 docker pull loveyogi2000/contact
 docker pull loveyogi2000/courses
 docker pull loveyogi2000/about
@@ -146,7 +146,7 @@ Run the containers using the following commands:
 
 bash
 Copy code
-docker run --name home -d -p 8080:80 loveyogi2000/home
+docker run --name home -d -p 8080:80 loveyogi2000/
 docker run --name contact -d -p 8081:80 loveyogi2000/contact
 docker run --name courses -d -p 8082:80 loveyogi2000/courses
 docker run --name about -d -p 8083:80 loveyogi2000/about
@@ -166,5 +166,5 @@ Run the Node.js application container:
 css
 Copy code
 docker run --name nodeapp -d -p 3000:3000 --net mynetwork loveyogi2000/nodeapp
-Once all containers are running, you can access the web app using http://your-ec2-instance-ip/home.
+Once all containers are running, you can access the web app using http://your-ec2-instance-ip/.
 

@@ -44,7 +44,7 @@ http {
             proxy_pass  http://43.205.103.223:8083/;
         }
 
-        location /home {
+        location / {
             proxy_pass  http://43.205.103.223:8080/;
         }
 
