@@ -18,7 +18,7 @@ spec:
         app: mongo
     spec:
       containers:
-      - image: aakashgaur57/mongo
+      - image: amiharsh/msvc:db
         name: mongo
         ports:
         - containerPort: 80

@@ -25,6 +25,6 @@ spec:
         imagePullPolicy: Always
         env:
         - name: MONGO_URI
-          value: "mongodb://mongolb.default.svc.cluster.local:27017/mydb"
+          value: "mongodb://mongo.msvc.svc.cluster.local:27017/mydb"
         resources: {}
 status: {}
