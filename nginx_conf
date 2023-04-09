@@ -40,7 +40,7 @@ http {
             proxy_pass  http://43.205.103.223:8083/;
         }
 
-        location /aboutus {
+        location /about {
             proxy_pass  http://43.205.103.223:8083/;
         }
 
