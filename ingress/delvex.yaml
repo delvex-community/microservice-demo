@@ -4,7 +4,7 @@ metadata:
   name: msvc-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-issuer
-    # nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
@@ -44,20 +44,6 @@ spec:
         backend:
           service:
             name: exams
-            port:
-              number: 80
-      - path: /auth/login
-        pathType: Prefix
-        backend:
-          service:
-            name: auth
-            port:
-              number: 80
-      - path: /auth/register
-        pathType: Prefix
-        backend:
-          service:
-            name: auth
             port:
               number: 80
   tls:
