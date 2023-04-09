@@ -13,5 +13,4 @@ spec:
   selector:
     app: contact
   type: NodePort
-status:
-  loadBalancer: {}
+

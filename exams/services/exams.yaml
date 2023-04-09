@@ -13,5 +13,3 @@ spec:
   selector:
     app: exams
   type: NodePort
-status:
-  loadBalancer: {}

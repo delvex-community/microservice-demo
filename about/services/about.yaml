@@ -13,5 +13,4 @@ spec:
   selector:
     app: about
   type: NodePort
-status:
-  loadBalancer: {}
+

@@ -13,5 +13,4 @@ spec:
   selector:
     app: backend
   type: NodePort
-status:
-  loadBalancer: {}
+

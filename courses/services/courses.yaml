@@ -13,5 +13,4 @@ spec:
   selector:
     app: courses
   type: NodePort
-status:
-  loadBalancer: {}
+
