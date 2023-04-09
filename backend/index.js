@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({
 }))
 
 
-mongoose.connect(process.env.MONGO_URI,{  //changes in localhost
+mongoose.connect(process.env.MONGO_URI,{  
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -24,10 +24,7 @@ db.once('open',()=>{
 
     const http = require('http');
 
-    // Get the public IP address of the EC2 instance
-
-    // Use the ipAddress variable to redirect to the EC2 instance IP address
-    app.post("/loginhit",(req,res)=>{
+    app.post("/login",(req,res)=>{
         var email = req.body.email;
         var password = req.body.password;
         var  message = "";
@@ -54,7 +51,7 @@ db.once('open',()=>{
     });
 
     // Use the ipAddress variable to redirect to the EC2 instance IP address
-    app.post("/sign_up",(req,res)=>{
+    app.post("/signup",(req,res)=>{
         var email = req.body.email;
         var mobile = req.body.mobile;
         var password = req.body.password;
@@ -74,12 +71,6 @@ db.once('open',()=>{
         
         return res.redirect(`/login`)
     })
-
-    // Use the ipAddress variable to redirect to the EC2 instance IP address
-
-
-
-    // Use the ipAddress variable to redirect to the EC2 instance IP address
     app.get("/",(req,res)=>{
         
         return res.redirect(`/`);
