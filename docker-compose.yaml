@@ -20,8 +20,8 @@ services:
       - 1124:80
   exams:
     container_name: exam_c
-    build: ./exams/
-    image: aakashgaur57/exams
+    build: ./examss/
+    image: aakashgaur57/examss
     ports:
       - 1125:80
   home:

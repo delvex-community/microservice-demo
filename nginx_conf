@@ -64,7 +64,7 @@ http {
             proxy_pass  http://43.205.103.223:8084/register.html;
         }
 
-        location /exam {
+        location /exams {
             proxy_pass  http://43.205.103.223:8088/;
         }
 
