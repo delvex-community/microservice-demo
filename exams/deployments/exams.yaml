@@ -18,7 +18,7 @@ spec:
         app: exams
     spec:
       containers:
-      - image: aakashgaur57/exams
+      - image: amiharsh/msvc:exams
         name: exams
         ports:
         - containerPort: 80

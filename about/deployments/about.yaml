@@ -18,7 +18,7 @@ spec:
         app: about
     spec:
       containers:
-      - image: aakashgaur57/about
+      - image: amiharsh/msvc:about
         name: about
         resources: {}
 status: {}

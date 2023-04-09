@@ -18,7 +18,7 @@ spec:
         app: contact
     spec:
       containers:
-      - image: aakashgaur57/contact
+      - image: amiharsh/msvc:contact
         name: contact
         resources: {}
 status: {}

@@ -18,8 +18,8 @@ spec:
         app: home
     spec:
       containers:
-      - image: aakashgaur57/home
-        name: homecontainer
+      - image: amiharsh/msvc:home
+        name: home
         env:
         - name: AUTH_URI
           value: "auth.example.com"
