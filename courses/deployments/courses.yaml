@@ -20,5 +20,6 @@ spec:
       containers:
       - image: amiharsh/msvc:courses
         name: courses
+        imagePullPolicy: Always
         resources: {}
 status: {}

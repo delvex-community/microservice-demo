@@ -20,5 +20,6 @@ spec:
       containers:
       - image: amiharsh/msvc:contact
         name: contact
+        imagePullPolicy: Always
         resources: {}
 status: {}

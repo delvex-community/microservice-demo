@@ -22,6 +22,7 @@ spec:
         name: backend
         ports:
         - containerPort: 80
+        imagePullPolicy: Always
         env:
         - name: MONGO_URI
           value: "mongodb://mongolb.default.svc.cluster.local:27017/mydb"

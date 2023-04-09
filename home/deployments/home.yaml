@@ -25,5 +25,6 @@ spec:
           value: "auth.example.com"
         ports:
         - containerPort: 80
+        imagePullPolicy: Always
         resources: {}
 status: {}
